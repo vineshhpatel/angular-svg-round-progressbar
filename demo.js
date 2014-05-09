@@ -1,8 +1,12 @@
 angular.module('demo', ['angular-svg-round-progress'])
     .controller('demoCtrl', ['$scope', '$timeout', function($scope, $timeout){
-        $scope.current = 27;
-        $scope.max = 50;
-        $scope.uploadCurrent = 0;
+        $scope.current          = 27;
+        $scope.max              = 50;
+        $scope.uploadCurrent    = 0;
+        $scope.stroke           = 20;
+        $scope.currentColor     = '#45ccce';
+        $scope.bgColor          = '#eaeaea';
+        $scope.radius           = 100;
 
         var random = function(min, max){
             return Math.round(Math.floor(Math.random()*(max-min+1)+min));
@@ -15,6 +19,10 @@ angular.module('demo', ['angular-svg-round-progress'])
 
         $scope.decrement = function(amount){
             $scope.current-=(amount || 1);
+        };
+
+        $scope.asd = function(){
+            $scope.stroke+=2;
         };
 
         $scope.start = function(){
