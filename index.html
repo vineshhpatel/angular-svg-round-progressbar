@@ -66,10 +66,18 @@
             float:right;
             padding: 5px;
         }
+
+        .back{
+            position: fixed;
+            top:5px;
+            right:5px;
+        }
     </style>
 </head>
 <body ng-app="demo">
     <div class="container" ng-controller="demoCtrl">
+        <a class="back" href="https://github.com/crisbeto/angular-svg-round-progressbar">Back to project repo</a>
+
         <h2>Sample progressbar</h2>
         <div class="progress-wrapper" ng-style="{'font-size': ((radius + stroke)/3)+'px'}">
             <div class="progress">{{ current }}/{{ max }}</div>
