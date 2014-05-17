@@ -135,16 +135,17 @@
 
     <div class="container" ng-controller="demoCtrl">
         <h2>Upload progress example</h2>
-        <div class="progress-wrapper">
+        <div class="progress-wrapper" ng-style="{'font-size': ((radius + stroke)/3)+'px'}">
             <div class="progress">{{ ((uploadCurrent/100)*100) | number:0 }}%</div>
             <div 
                 round-progress 
                 max="100" 
                 current="uploadCurrent" 
-                color="#45ccce" 
-                bgcolor="#eaeaea" 
-                radius="100" 
-                stroke="20">
+                color="{{ currentColor }}" 
+                bgcolor="{{ bgColor }}"  
+                radius="{{ radius }}" 
+                stroke="{{ stroke }}">
+                
             </div>
         </div>
 
