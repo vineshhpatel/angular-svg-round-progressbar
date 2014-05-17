@@ -75,22 +75,23 @@
     </style>
 </head>
 <body ng-app="demo">
-    <div class="container" ng-controller="demoCtrl">
-        <a class="back" href="https://github.com/crisbeto/angular-svg-round-progressbar">Back to project repo</a>
-
-        <h2>Sample progressbar</h2>
-        <div class="progress-wrapper" ng-style="{'font-size': ((radius + stroke)/3)+'px'}">
-            <div class="progress">{{ current }}/{{ max }}</div>
-            <div 
-                round-progress 
-                max="max" 
-                current="current" 
-                color="{{ currentColor }}" 
-                bgcolor="{{ bgColor }}" 
-                radius="{{ radius }}" 
-                stroke="{{ stroke }}">
+    <div ng-controller="demoCtrl">
+        <div class="container">
+            <a class="back" href="https://github.com/crisbeto/angular-svg-round-progressbar">Back to project repo</a>
+    
+            <h2>Sample progressbar</h2>
+            <div class="progress-wrapper" ng-style="{'font-size': ((radius + stroke)/3)+'px'}">
+                <div class="progress">{{ current }}/{{ max }}</div>
+                <div 
+                    round-progress 
+                    max="max" 
+                    current="current" 
+                    color="{{ currentColor }}" 
+                    bgcolor="{{ bgColor }}" 
+                    radius="{{ radius }}" 
+                    stroke="{{ stroke }}">
+                </div>
             </div>
-        </div>
 
         <button ng-click="increment();">Increment</button>
         <button ng-click="decrement();">Decrement</button>
@@ -133,7 +134,7 @@
         </form>
     </div>
 
-    <div class="container" ng-controller="demoCtrl">
+    <div class="container">
         <h2>Upload progress example</h2>
         <div class="progress-wrapper" ng-style="{'font-size': ((radius + stroke)/3)+'px'}">
             <div class="progress">{{ ((uploadCurrent/100)*100) | number:0 }}%</div>
@@ -153,7 +154,7 @@
         <button ng-click="stop();">Stop</button>
         <button ng-click="reset();">Reset</button>
     </div>
-
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="https://rawgithub.com/crisbeto/angular-svg-round-progressbar/master/roundProgress.min.js"></script>
