@@ -22,6 +22,11 @@ angular.module('someModule', ['angular-svg-round-progress'])
 * `bgcolor` hex background color, example: `#eaeaea`
 * `stroke` specifies the thickness of the line
 * `semi` boolen, specifies whether the progressbar should be a semicircle or a full circle
+* To manually trigger a complete re-render of the progressbar, broadcast a "renderCircle" from a parent scope:
+
+```javascript
+$rootScope.$broadcast('renderCircle');
+```
 
 ### Example:
 
