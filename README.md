@@ -21,6 +21,7 @@ angular.module('someModule', ['angular-svg-round-progress'])
 * `color` hex color for the `current` value, example: `#45ccce`
 * `bgcolor` hex background color, example: `#eaeaea`
 * `stroke` specifies the thickness of the line
+* `semi` boolen, specifies whether the progressbar should be a semicircle or a full circle
 
 ### Example:
 
@@ -32,7 +33,8 @@ angular.module('someModule', ['angular-svg-round-progress'])
 	color="#45ccce" 
 	bgcolor="#eaeaea" 
 	radius="100" 
-	stroke="20">
+	stroke="20"
+	semi="true">
 </div>
 ```
 
@@ -49,3 +51,4 @@ angular.module('someModule', ['angular-svg-round-progress'])
 * Erik Möller for the requestAnimationFrame shim
 * [Modernizr](http://modernizr.com/) for the SVG support test
 * [Kirupa](http://www.kirupa.com/forum/showthread.php?378287-Robert-Penner-s-Easing-Equations-in-Pure-JS-(no-jQuery)) for the easing function
+* [opsb](http://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle) for some of the math
