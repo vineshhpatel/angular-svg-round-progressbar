@@ -65,7 +65,7 @@
             margin-bottom: 5px;
         }
 
-        input{
+        input, select{
             float:right;
             padding: 5px;
         }
@@ -88,12 +88,13 @@
                 round-progress
                 max="max"
                 current="current"
-                color="{{ currentColor }}"
-                bgcolor="{{ bgColor }}"
-                radius="{{ radius }}"
+                color="currentColor"
+                bgcolor="bgColor"
+                radius="radius"
                 semi="isSemi"
-                stroke="{{ stroke }}"
-                iterations="{{ iterations }}">
+                stroke="stroke"
+                iterations="iterations"
+                animation="currentAnimation">
             </div>
         </div>
 
@@ -145,6 +146,11 @@
                 <label>Iterations:</label>
                 <input type="number" ng-model="iterations"/>
             </div>
+
+            <div class="cf">
+                <label>Animation:</label>
+                <select ng-model="currentAnimation" ng-options="animation for animation in animations"></select>
+            </div>
         </form>
     </div>
 
@@ -156,8 +162,8 @@
                 round-progress
                 max="100"
                 current="uploadCurrent"
-                color="#45ccce"
-                bgcolor="#eaeaea"
+                color="'#45ccce'"
+                bgcolor="'#eaeaea'"
                 radius="100"
                 semi="isSemi"
                 stroke="15">
@@ -170,11 +176,11 @@
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    <script src="roundProgress.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+    <script src="roundProgress.min.js"></script>
     <script>
         angular.module('demo', ['angular-svg-round-progress'])
-        .controller('demoCtrl', ['$scope', '$timeout', '$rootScope', function($scope, $timeout, $rootScope){
+        .controller('demoCtrl', ['$scope', '$timeout', 'roundProgressService', function($scope, $timeout, roundProgressService){
 
             $scope.current =        27,
             $scope.max =            50,
@@ -194,10 +200,6 @@
                 $scope.current+=(amount || 1);
             };
 
-            $scope.$watchCollection('[max, stroke, radius, isSemi, currentColor, bgColor, iterations]', function(newValue, oldValue){
-                $rootScope.$broadcast('renderCircle');
-            });
-
             $scope.decrement = function(amount){
                 $scope.current-=(amount || 1);
             };
@@ -210,7 +212,7 @@
                     if($scope.uploadCurrent < 100){
                         $scope.start();
                     }
-                }, random(300, 500));
+                }, random(100, 500));
             };
 
             $scope.stop = function(){
@@ -222,6 +224,12 @@
                 $scope.uploadCurrent = 0;
             };
 
+            $scope.currentAnimation = 'easeOutCubic';
+            $scope.animations = [];
+
+            angular.forEach(roundProgressService.animations, function(value, key){
+                $scope.animations.push(key);
+            });
         }]);
     </script>
 </body>
