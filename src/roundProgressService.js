@@ -28,6 +28,7 @@ angular.module('angular-svg-round-progressbar').service('roundProgressService', 
 
     service.getOffset = function(scope, options){
         var value = +options.offset || 0;
+        value = (+options.offset || 0) + Math.abs(options.stroke - options.fillStroke);
 
         if(options.offset === 'inherit'){
             var parent = scope.$parent;

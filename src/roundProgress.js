@@ -17,6 +17,7 @@ angular.module('angular-svg-round-progressbar').directive('roundProgress', ['$wi
             color:          '@',
             bgcolor:        '@',
             stroke:         '@',
+            fillStroke:     '@',
             duration:       '@',
             animation:      '@',
             offset:         '@',
@@ -51,6 +52,7 @@ angular.module('angular-svg-round-progressbar').directive('roundProgress', ['$wi
                 var responsive       = options.responsive;
                 var radius           = +options.radius || 0;
                 var stroke           = +options.stroke;
+                var fillStroke       = +options.fillStroke || stroke;
                 var diameter         = radius*2;
                 var backgroundSize   = radius - (stroke/2) - service.getOffset(scope, options);
 
@@ -78,7 +80,7 @@ angular.module('angular-svg-round-progressbar').directive('roundProgress', ['$wi
 
                 ring.css({
                     stroke:          service.resolveColor(options.color),
-                    strokeWidth:     stroke,
+                    strokeWidth:     fillStroke,
                     strokeLinecap:   options.rounded ? 'round': 'butt'
                 });
 

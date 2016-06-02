@@ -1,4 +1,4 @@
-/* angular-svg-round-progressbar@0.4.4 2016-05-06 */
+/* angular-svg-round-progressbar@0.4.4 2016-06-03 */
 // shim layer with setTimeout fallback
 // credit Erik Möller and http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 'use strict';
@@ -47,6 +47,7 @@ angular.module('angular-svg-round-progressbar').constant('roundProgressConfig', 
     color:          '#45ccce',
     bgcolor:        '#eaeaea',
     stroke:         15,
+    fillStroke:     15,
     duration:       800,
     animation:      'easeOutCubic',
     animationDelay: 0,
@@ -83,6 +84,7 @@ angular.module('angular-svg-round-progressbar').service('roundProgressService', 
 
     service.getOffset = function(scope, options){
         var value = +options.offset || 0;
+        value = (+options.offset || 0) + Math.abs(options.stroke - options.fillStroke);
 
         if(options.offset === 'inherit'){
             var parent = scope.$parent;
@@ -327,6 +329,7 @@ angular.module('angular-svg-round-progressbar').directive('roundProgress', ['$wi
             color:          '@',
             bgcolor:        '@',
             stroke:         '@',
+            fillStroke:     '@',
             duration:       '@',
             animation:      '@',
             offset:         '@',
@@ -361,6 +364,7 @@ angular.module('angular-svg-round-progressbar').directive('roundProgress', ['$wi
                 var responsive       = options.responsive;
                 var radius           = +options.radius || 0;
                 var stroke           = +options.stroke;
+                var fillStroke       = +options.fillStroke || stroke;
                 var diameter         = radius*2;
                 var backgroundSize   = radius - (stroke/2) - service.getOffset(scope, options);
 
@@ -388,7 +392,7 @@ angular.module('angular-svg-round-progressbar').directive('roundProgress', ['$wi
 
                 ring.css({
                     stroke:          service.resolveColor(options.color),
-                    strokeWidth:     stroke,
+                    strokeWidth:     fillStroke,
                     strokeLinecap:   options.rounded ? 'round': 'butt'
                 });
 

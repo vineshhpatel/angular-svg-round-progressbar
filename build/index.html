@@ -123,6 +123,7 @@
                 semi="isSemi"
                 rounded="rounded"
                 stroke="{{ stroke }}"
+                fill-stroke="{{ stroke*2 }}"
                 clockwise="clockwise"
                 responsive="responsive"
                 duration="{{ duration }}"
@@ -226,7 +227,7 @@
         </form>
     </div>
 
-    <div class="container">
+    <!-- <div class="container">
         <h2>Clock example</h2>
         <div class="progress-wrapper">
             <div class="progress ng-cloak" ng-style="getStyle()">{{ time }}</div>
@@ -274,7 +275,7 @@
                 </round-progress>
             </round-progress>
         </div>
-    </div>
+    </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
     <script src="roundProgress.js"></script>
@@ -347,17 +348,17 @@
                 return val < 10 ? ('0' + val) : val;
             };
 
-            $interval(function(){
-                var date = new Date();
-                var hours = date.getHours();
-                var minutes = date.getMinutes();
-                var seconds = date.getSeconds();
+            // $interval(function(){
+            //     var date = new Date();
+            //     var hours = date.getHours();
+            //     var minutes = date.getMinutes();
+            //     var seconds = date.getSeconds();
 
-                $scope.hours = hours;
-                $scope.minutes = minutes;
-                $scope.seconds = seconds;
-                $scope.time = getPadded(hours) + ':' + getPadded(minutes) + ':' + getPadded(seconds);
-            }, 1000);
+            //     $scope.hours = hours;
+            //     $scope.minutes = minutes;
+            //     $scope.seconds = seconds;
+            //     $scope.time = getPadded(hours) + ':' + getPadded(minutes) + ':' + getPadded(seconds);
+            // }, 1000);
         }]);
     </script>
 </body>
